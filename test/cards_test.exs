@@ -56,4 +56,11 @@ defmodule CardsTest do
     assert colors.primary == "red"
     assert colors.secondary == "yellow"
   end
+
+  test "can use keyword lists to have multiple elements with the same key" do
+    colors = [{:primary, "red"}, {:primary, "green"}]
+    values = Keyword.get_values(colors, :primary)
+    assert Enum.at(values, 0) == "red"
+    assert Enum.at(values, 1) == "green"
+  end
 end
